@@ -17,7 +17,7 @@ class FileImagePickPlugin: FlutterPlugin, MethodCallHandler {
   private lateinit var channel : MethodChannel
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "file_image_pick")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "fw.file.image.pick")
     channel.setMethodCallHandler(this)
   }
 

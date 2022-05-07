@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:file_image_pick/file_image_pick.dart';
 
 void main() {
-  const MethodChannel channel = MethodChannel('file_image_pick');
+  const MethodChannel channel = MethodChannel('fw.file.image.pick');
 
   TestWidgetsFlutterBinding.ensureInitialized();
 
