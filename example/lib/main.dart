@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      FileImageModel fileModel = await FileChooseManager().openChooseFile();
+      FileImageModel fileModel = await FileChooseManager.instance.openChooseFile();
       print(fileModel);
     } on PlatformException {
       throw ('Failed to get file');
