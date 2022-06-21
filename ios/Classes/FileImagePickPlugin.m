@@ -11,7 +11,7 @@
 
 @implementation FileImagePickPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  // [SwiftFileImagePickPlugin registerWithRegistrar:registrar];
+//    [SwiftFileImagePickPlugin registerWithRegistrar:registrar];
    FlutterMethodChannel* channel = [FlutterMethodChannel
       methodChannelWithName:@"fw.file.image.pick"
             binaryMessenger:[registrar messenger]];
@@ -19,6 +19,7 @@
   [registrar addMethodCallDelegate:instance channel:channel];
 }
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
+  NSLog(@"当前执行了吗:%@",call.method);
   if ([@"openChooseFile" isEqualToString:call.method]) {
     UIViewController *rootVC = [UIApplication sharedApplication].delegate.window.rootViewController;
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
