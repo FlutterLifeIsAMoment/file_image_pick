@@ -1,6 +1,6 @@
 name: file_image_pick
 description: A file choose flutter plugin project.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/WFfluProject/file_image_pick
 
 environment:
