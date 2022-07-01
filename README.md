@@ -17,7 +17,11 @@ samples, guidance on mobile development, and a full API reference.
 file_image_pick:  0.0.1
 ```dart
 import 'package:file_image_pick/file_image_pick.dart';
-
-     FileImageModel fileModel = await FileChooseManager().openChooseFile();
+//get file
+      FileImageModel fileModel = await FileChooseManager.instance.openChooseFile();
       print(fileModel);
+
+ //get image 
+       FileImageModel fileModel = await FileChooseManager.instance.getImage();
+      print(fileModel);     
 ```

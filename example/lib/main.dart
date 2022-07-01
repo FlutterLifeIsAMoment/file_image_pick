@@ -25,22 +25,22 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
+  Future<void> getFile() async {
     try {
       FileImageModel fileModel = await FileChooseManager.instance.openChooseFile();
       print(fileModel);
     } on PlatformException {
       throw ('Failed to get file');
     }
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
+  }
 
-    setState(() {});
+  Future<void> getImage() async {
+    try {
+      FileImageModel fileModel = await FileChooseManager.instance.getImage();
+      print(fileModel);
+    } on PlatformException {
+      throw ('Failed to get image');
+    }
   }
 
   @override
@@ -50,16 +50,31 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: InkWell(
-            child: Padding(
-              padding: EdgeInsets.all(20),
-              child: Text('点击获取文件'),
+        body: Column(
+          children: [
+            Center(
+              child: InkWell(
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Text('点击获取文件'),
+                ),
+                onTap: () {
+                  getFile();
+                },
+              ),
             ),
-            onTap: () {
-              initPlatformState();
-            },
-          ),
+            Center(
+              child: InkWell(
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Text('点击获取图片'),
+                ),
+                onTap: () {
+                  getImage();
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

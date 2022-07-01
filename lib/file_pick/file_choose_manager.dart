@@ -15,4 +15,11 @@ class FileChooseManager {
     FileImageModel fileModel = FileImageModel.fromJson(fileMap);
     return fileModel;
   }
+
+  //get Image
+  Future<FileImageModel> getImage() async {
+    final fileMap = await FileImagePick.getImage;
+    FileImageModel fileModel = FileImageModel.fromJson(fileMap);
+    return fileModel;
+  }
 }

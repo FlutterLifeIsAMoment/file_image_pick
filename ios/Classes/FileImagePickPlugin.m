@@ -33,7 +33,14 @@
       [dic setObject:failureStr forKey:@"failure"];
       result(dic);
     }];
-  } else if ([@"getPlatformVersion" isEqualToString:call.method]) {
+  } else if ([@"getImage" isEqualToString:call.method]) {
+    UIViewController *rootVC = [UIApplication sharedApplication].delegate.window.rootViewController;
+    [[YTPhotoManager shradInstance] showAlertWithController:rootVC isClip:NO style:YJPhotoStyleDefualt completion:^(UIImage * _Nonnull image) {
+        [dic setObject:@(isSuccess) forKey:@"isSuccess"];
+        [dic setObject:UIImagePNGRepresentation(image) forKey:@"fileData"];
+        result(dic);
+		}];
+  }  else if ([@"getPlatformVersion" isEqualToString:call.method]) {
     result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
   } else {
     result(FlutterMethodNotImplemented);

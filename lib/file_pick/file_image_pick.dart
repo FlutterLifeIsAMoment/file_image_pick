@@ -15,4 +15,10 @@ class FileImagePick {
     fileMap = await _channel.invokeMethod('openChooseFile');
     return fileMap;
   }
+
+  static Future<Map<String, dynamic>> get getImage async {
+    Map<String, dynamic> fileMap = {};
+    fileMap = await _channel.invokeMethod('getImage');
+    return fileMap;
+  }
 }
